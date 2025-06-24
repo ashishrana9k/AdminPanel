@@ -18,7 +18,21 @@ import Manage from '@/app/Topsection/page'
 
 import { RiArrowDropRightLine, RiArrowLeftSLine } from "react-icons/ri";
 
-function createData(name: string, plan: string, credits: string, totalSpend: string, action: string) {
+interface RowData {
+  name: string;
+  plan: string;
+  credits: number;
+  totalSpend: string;
+  action: React.ReactNode; // This remains as React.ReactNode for now, as a number is a valid node
+}
+
+function createData(
+  name: string,
+  plan: string,
+  credits: number,
+  totalSpend: string,
+  action: React.ReactNode // This remains as React.ReactNode for now
+): RowData {
   return { name, plan, credits, totalSpend, action };
 }
 
