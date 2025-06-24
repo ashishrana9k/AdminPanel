@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+
+body {
+  background-image: url('/images/blackbackground.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  /* color:white; */
+}
+
+td {
+  color: white !important;
+}
+
+td {
+  color: blue;
+}
+
+#bg-color {
+  background-color: #FFFFFF1A;
+}
+
+.dollor {
+  font-size: 40px;
+}
+
+
+
+.bottomborderrs td {
+  border-bottom: 1px solid #1F1F1F !important;
+}
+
+.gradient-border {
+  background:
+    linear-gradient(#000, #000) padding-box,
+    /* inner background */
+    linear-gradient(139.07deg,
+      rgba(255, 255, 255, 0.45) -0.88%,
+      rgba(255, 255, 255, 0.3) 24.09%,
+      rgba(255, 255, 255, 0.2) 48.88%,
+      rgba(255, 255, 255, 0.45) 109.62%) border-box;
+  /* border gradient */
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 1rem;
+  color: white;
+}
+
+.buttonBorder {
+  background:
+    linear-gradient(#000, #000) padding-box,
+    /* inner background color */
+    linear-gradient(90deg,
+      #560085 0%,
+      #C557C7 34.13%,
+      #DD401E 70.19%,
+      #FFB700 100%) border-box;
+  /* gradient border */
+
+  border: 1px solid transparent;
+  border-radius: 24px;
+  color: white;
+  padding: 0.75rem 1rem;
+  /* optional spacing */
+}
