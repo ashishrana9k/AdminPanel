@@ -1,9 +1,12 @@
 
+
 import { TabProvider } from '@/app/Context/TabContext';
 import Navbar from './Component/Navbar/page';
 import './globals.css';
+import type { ReactNode } from 'react'; // Import ReactNode
 
-export default function RootLayout({ children }) {
+// Add type annotation for children
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body>
