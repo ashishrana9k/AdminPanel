@@ -18,7 +18,7 @@ import Manage from '@/app/Topsection/page'
 
 import { RiArrowDropRightLine, RiArrowLeftSLine } from "react-icons/ri";
 
-function createData(name, plan, credits, totalSpend, action) {
+function createData(name: string, plan: string, credits: string, totalSpend: string, action: string) {
   return { name, plan, credits, totalSpend, action };
 }
 
