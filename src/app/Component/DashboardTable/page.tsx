@@ -12,12 +12,27 @@ import Paper from '@mui/material/Paper';
 import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
 
-function createData(name, plan, credits, totalSpend, action) {
+
+interface RowData {
+  name: string;
+  plan: string;
+  credits: number;
+  totalSpend: string;
+  action: React.ReactNode; // This remains as React.ReactNode for now, as a number is a valid node
+}
+
+function createData(
+  name: string,
+  plan: string,
+  credits: number,
+  totalSpend: string,
+  action: React.ReactNode // This remains as React.ReactNode for now
+): RowData {
   return { name, plan, credits, totalSpend, action };
 }
 
 const allRows = Array.from({ length: 48 }, (_, i) =>
-  createData(`EFWVsq...v27Q9g-${i + 1}`, 'Intermediate', 600, '$2500', 4.0 + (i % 5))
+  createData(`EFWVsq...v27Q9g-${i + 1}`, 'Intermediate', 600, '$2500', 4.0 + (i % 5)) // `action` is passed as a number here
 );
 
 const rowsPerPage = 8;
@@ -26,7 +41,7 @@ export default function Page() {
   const [page] = useState(1); // Static page - pagination removed
 
   const [activeToggles, setActiveToggles] = useState(() => {
-    const initialState = {};
+    const initialState: { [key: string]: boolean } = {}; // Add type for initialState
     allRows.forEach((row, index) => {
       initialState[row.name] = !(index === 2 || index === 3); // 3rd and 4th inactive
     });
@@ -36,7 +51,8 @@ export default function Page() {
   const startIndex = (page - 1) * rowsPerPage;
   const currentRows = allRows.slice(startIndex, startIndex + rowsPerPage);
 
-  const toggleUser = (name) => {
+  // FIX HERE: Add type annotation for 'name'
+  const toggleUser = (name: string) => {
     setActiveToggles(prev => ({
       ...prev,
       [name]: !prev[name]
@@ -75,6 +91,9 @@ export default function Page() {
                       alt="Credits"
                       width={16}
                       height={16}
+                    // For Next.js Image component, you generally need a `priority` prop
+                    // or ensure the image is correctly configured for optimization.
+                    // If you're using plain <img>, this is fine.
                     />
                   </div>
                 </TableCell>
