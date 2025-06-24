@@ -1,3 +1,5 @@
+// pages/FullDashboardPage.tsx (or wherever this component is)
+
 'use client';
 
 import React from 'react';
@@ -15,12 +17,14 @@ export default function FullDashboardPage() {
     { planName: 'Corporate', price: '$35/month', credits: '500' },
   ];
 
-  const linkClasses = (path) =>
+  // --- FIX IS HERE ---
+  const linkClasses = (path: string) =>
     `flex items-center border-l-2 py-3 pl-6 pr-2 cursor-pointer ${
       pathname === path
         ? 'border-[#FFB700] bg-[#FFB7001A]'
         : 'border-transparent hover:border-[#FFB700] hover:bg-[#FFB7001A]'
     }`;
+  // --- END FIX ---
 
   return (
     <div className='flex h-screen text-white'>
@@ -36,7 +40,10 @@ export default function FullDashboardPage() {
         </div>
         <div className='mt-20'>
           <nav className='space-y-4'>
-            <Link href='/' className={linkClasses('')}>
+            {/* You're passing empty strings to linkClasses here, which might not be what you intend.
+                For the root path, use '/' or adjust your logic.
+                For other links, pass the actual href, e.g., linkClasses('/Users') */}
+            <Link href='/' className={linkClasses('/')}> {/* Changed from '' to '/' */}
               <Image
                 src='/images/dashboardicon.svg'
                 width={33}
@@ -47,7 +54,7 @@ export default function FullDashboardPage() {
               <span>Dashboard</span>
             </Link>
 
-            <Link href='/Users' className={linkClasses('')}>
+            <Link href='/users' className={linkClasses('/users')}> {/* Changed from '' to '/users' */}
               <Image
                 src='/images/listicon2.svg'
                 width={33}
@@ -58,7 +65,7 @@ export default function FullDashboardPage() {
               <span>Users</span>
             </Link>
 
-            <Link href='/manage' className={linkClasses('')}>
+            <Link href='/manage' className={linkClasses('/manage')}> {/* Changed from '' to '/manage' */}
               <Image
                 src='/images/listicon3.svg'
                 width={33}
@@ -69,7 +76,8 @@ export default function FullDashboardPage() {
               <span>Manage API Pricing</span>
             </Link>
 
-             <Link href='/manage' className={linkClasses('')}>
+            {/* Duplicate link - consider removing one or pointing to a different path */}
+            <Link href='/manage' className={linkClasses('/manage')}>
               <Image
                 src='/images/listicon3.svg'
                 width={33}
@@ -80,7 +88,7 @@ export default function FullDashboardPage() {
               <span>Manage API Pricing</span>
             </Link>
 
-            <Link href='/docs' className={linkClasses('')}>
+            <Link href='/docs' className={linkClasses('/docs')}> {/* Changed from '' to '/docs' */}
               <Image
                 src='/images/listicon4.svg'
                 width={33}
